@@ -1,0 +1,57 @@
+
+services:
+  auth-db:
+    image: postgres:15
+    container_name: auth-db
+    restart: always
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth_db
+    volumes:
+      - auth_postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  auth-service:
+    build:
+      context: ./services/auth
+      dockerfile: Dockerfile.dev  # <-- see below
+    container_name: auth-service
+    ports:
+      - '3001:3000'
+    depends_on:
+      - auth-db
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@auth-db:5432/auth_db
+    volumes:
+      - ./services/auth:/app
+      - /app/node_modules  # Avoid overwriting node_modules
+    command: npm run start:dev
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile.dev  # <-- see below
+    container_name: frontend
+    ports:
+      - '19006:19006'
+    depends_on:
+      - auth-service
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules
+    command: ["expo", "start", "--tunnel"]
+    networks:
+      - app-network
+
+volumes:
+  auth_postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
