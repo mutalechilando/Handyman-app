@@ -1,0 +1,45 @@
+{
+    "extends": "@repo/typescript-config/nest.json",
+    "compilerOptions": {
+        "paths": {
+            "@auth/keycloak/*": [
+                "src/keycloak/*"
+            ],
+            "@auth/app/*": [
+                "src/app/*"
+            ],
+            "@auth/config/*": [
+                "src/config/*"
+            ],
+            "@auth/utils/*": [
+                "src/utils/*"
+            ],
+            "@auth/constants/*": [
+                "src/constants/*"
+            ],
+            "@auth/enums/*": [
+                "src/enums/*"
+            ],
+            "@auth/decorators/*": [
+                "src/decorators/*"
+            ],
+            "@auth/guards/*": [
+                "src/guards/*"
+            ],
+        },
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "declaration": false
+    },
+    "include": [
+        "src/**/*",
+        "types",
+        "global.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "test",
+        "dist",
+        "**/*spec.ts"
+    ]
+}

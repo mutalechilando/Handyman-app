@@ -1,0 +1,45 @@
+{
+  "name": "handyman",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types",
+    "prepare": "husky",
+    "start:debug": "turbo run start:debug",
+    "preinstall": "npx only-allow pnpm",
+    "lint:affected": "turbo run lint --filter=${BASE_COMMIT:-...[origin/main]}",
+    "lint:fix": "turbo run lint -- --fix",
+    "build:affected": "turbo run build --filter=${BASE_COMMIT:-...[origin/main]}",
+    "deploy": "turbo run deploy",
+    "deploy:affected": "turbo run deploy --filter=${BASE_COMMIT:-...[origin/main]}",
+    "deps:check": "npx npm-check-updates --deep",
+    "deps:update": "pnpm deps:check -u && pnpm install",
+    "dev:users": "turbo run dev --filter=users... --parallel"
+  },
+  "devDependencies": {
+    "del-cli": "^6.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.2",
+    "typescript": "5.8.2"
+  },
+  "lint-staged": {
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "packages/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

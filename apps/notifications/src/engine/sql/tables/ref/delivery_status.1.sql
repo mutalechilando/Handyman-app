@@ -1,0 +1,10 @@
+CREATE TABLE ref.delivery_status (
+    id SMALLSERIAL PRIMARY KEY,
+    name VARCHAR(64) NOT NULL UNIQUE,
+    is_deleted BOOLEAN DEFAULT false,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+ALTER TABLE ref.delivery_status
+    REPLICA IDENTITY DEFAULT;

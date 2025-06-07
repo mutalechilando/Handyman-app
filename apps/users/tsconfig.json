@@ -1,0 +1,57 @@
+{
+    "extends": "@repo/typescript-config/nest.json",
+    "compilerOptions": {
+        "paths": {
+            "@users/auth/*": [
+                "src/auth/*"
+            ],
+            "@users/app/*": [
+                "src/app/*"
+            ],
+            "@users/database/*": [
+                "src/database/*"
+            ],
+            "@users/config/*": [
+                "src/config/*"
+            ],
+            "@users/entities/*": [
+                "src/entities/*"
+            ],
+            "@users/modules/*": [
+                "src/modules/*"
+            ],
+            "@users/utils/*": [
+                "src/utils/*"
+            ],
+            "@users/constants/*": [
+                "src/constants/*"
+            ],
+            "@users/enums/*": [
+                "src/enums/*"
+            ],
+            "@users/decorators/*": [
+                "src/decorators/*"
+            ],
+            "@users/guards/*": [
+                "src/guards/*"
+            ],
+            "@users/user/*": [
+                "src/user/*"
+            ]
+        },
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "declaration": false
+    },
+    "include": [
+        "src/**/*",
+        "types",
+        "global.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "test",
+        "dist",
+        "**/*spec.ts"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@repo/seeder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "types": "./build/index.d",
+  "scripts": {
+    "build": "pnpm run clean && tsc",
+    "clean": "del ./build/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/logger": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.15.3",
+    "eslint": "^9.25.0",
+    "typescript": "^5.8.3"
+  }
+}

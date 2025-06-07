@@ -1,0 +1,57 @@
+{
+    "extends": "@repo/typescript-config/nest.json",
+    "compilerOptions": {
+        "paths": {
+            "@notifications/auth/*": [
+                "src/auth/*"
+            ],
+            "@notifications/app/*": [
+                "src/app/*"
+            ],
+            "@notifications/database/*": [
+                "src/database/*"
+            ],
+            "@notifications/notification/*": [
+                "src/notification/*"
+            ],
+            "@notifications/config/*": [
+                "src/config/*"
+            ],
+            "@notifications/entities/*": [
+                "src/entities/*"
+            ],
+            "@notifications/modules/*": [
+                "src/modules/*"
+            ],
+            "@notifications/utils/*": [
+                "src/utils/*"
+            ],
+            "@notifications/constants/*": [
+                "src/constants/*"
+            ],
+            "@notifications/enums/*": [
+                "src/enums/*"
+            ],
+            "@notifications/decorators/*": [
+                "src/decorators/*"
+            ],
+            "@notifications/guards/*": [
+                "src/guards/*"
+            ],
+        },
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "declaration": false
+    },
+    "include": [
+        "src/**/*",
+        "types",
+        "global.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "test",
+        "dist",
+        "**/*spec.ts"
+    ]
+}

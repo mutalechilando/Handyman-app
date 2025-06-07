@@ -1,0 +1,32 @@
+{
+    "pipeline": {
+        "build": {
+            "dependsOn": [
+                "^build"
+            ],
+            "outputs": [
+                "dist/**"
+            ]
+        },
+        "docker:build": {
+            "dependsOn": [
+                "build"
+            ],
+            "outputs": []
+        },
+        "helm:package": {
+            "dependsOn": [
+                "docker:build"
+            ],
+            "outputs": [
+                "deploy/helm/*/charts/*.tgz"
+            ]
+        },
+        "helm:deploy": {
+            "dependsOn": [
+                "helm:package"
+            ],
+            "outputs": []
+        }
+    }
+}
